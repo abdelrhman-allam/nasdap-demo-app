@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace src\Domain\User;
+namespace src\Domain\Entities;
 
 use src\Domain\ValueObjects\UserId;
 use src\Domain\ValueObjects\Name;
@@ -40,6 +40,16 @@ class User{
         return $this->password;
     }
 
+
+    public function to_array(): array
+    {
+        return [
+            'id' => $this->id->getValue(),
+            'name' => $this->name->getValue(),
+            'email' => $this->email->getValue(),
+            'password' => $this->password->getValue(),
+        ];
+    }
 
 
 }

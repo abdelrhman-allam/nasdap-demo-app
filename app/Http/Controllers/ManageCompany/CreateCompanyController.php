@@ -5,7 +5,7 @@ namespace App\Http\Controllers\ManageCompany;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class CreateCompanyController extends Controller
 {
 
     public function __construct(public CreateCompanyUseCase $createCompanyUserCase)

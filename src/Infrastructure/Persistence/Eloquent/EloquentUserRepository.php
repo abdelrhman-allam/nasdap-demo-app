@@ -8,23 +8,18 @@ use App\Models\User as UserModel;
 
 class EloquentUserRepository implements UserRepositoryInterface
 {
-    public function __construct(UserModel $user)
+    public function __construct(private $db)
     {
-        $this->user = $user;
-
     }
 
     public function create(User $user): void
     {
-        $this->user->name = $user->getName();
-        $this->user->email = $user->getEmail();
-        $this->user->password = $user->getPassword();
-        $this->user->save()
+        UserModel::create($user->to_array());
     }
 
     public function findById(int $id): ?User
     {
-        return User::find($id);
+        return UserModel::find($id);
     }
 
     public function findByEmail(string $email): ?User

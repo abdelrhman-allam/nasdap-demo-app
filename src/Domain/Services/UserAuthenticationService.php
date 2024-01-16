@@ -19,7 +19,7 @@ class AuthenticationService implements AuthenticationServiceInterface
         $user = new User(
             $request->name,
             $request->email,
-            password_hash($request->password, PASSWORD_DEFAULT));
+            Hash::make($request->password));
 
         $this->userRepository->create($user);
     }
@@ -28,20 +28,15 @@ class AuthenticationService implements AuthenticationServiceInterface
     {
         $user = $this->userRepository->findOneByEmail($request->email);
 
-        if (!$user || !password_verify($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw new Exception('Invalid email or password');
         }
 
-        Auth::login($user);
+        return $user
     }
 
     public function logout(): void
     {
-        Auth::logout();
-    }
 
-    public function getCurrentUser(): ?User
-    {
-        return Auth::user();
     }
 }

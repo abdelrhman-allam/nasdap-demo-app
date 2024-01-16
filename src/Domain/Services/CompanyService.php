@@ -7,10 +7,12 @@ class CompanyService
 {
 
     protected $companyRepository;
+    protected $financialApiService;
 
-    public function __construct($companyRepository)
+    public function __construct($companyRepository, $financialApiService)
     {
         $this->companyRepository = $companyRepository;
+        $this->financialApiService = $financialApiService;
     }
 
 

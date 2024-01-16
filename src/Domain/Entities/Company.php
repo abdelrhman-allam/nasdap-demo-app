@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace src\Domain\Company\Entity;
+namespace src\Domain\Company\Entities;
 
 use src\Domain\ValueObject\CompanyId;
 use src\Domain\ValueObject\CompanyName;
@@ -40,6 +40,16 @@ class Company {
 
     public function getDescription(){
         return $this->description;
+    }
+
+    public function to_array(){
+        return [
+            'id' => $this->id->getValue(),
+            'name' => $this->name->getValue(),
+            'logo' => $this->logo->getValue(),
+            'description' => $this->description->getValue(),
+            'address' => $this->address->getValue(),
+        ];
     }
 
 }
