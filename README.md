@@ -41,13 +41,13 @@ Before proceeding, make sure you have the following requirements installed on yo
 5. Install dependencies:
 
    ````shell
-   docker-compose exec app composer install
+   docker-compose exec laravel.test composer install
    ````
 
 6. Generate an application key:
 
    ````shell
-   docker-compose exec app php artisan key:generate
+   docker-compose exec laravel.test php artisan key:generate
    ````
 
 7. Access the application in your browser:
