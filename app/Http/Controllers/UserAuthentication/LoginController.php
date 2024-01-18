@@ -19,7 +19,7 @@ class LoginController extends Controller
             return redirect('/company');
         }
 
-        return redirect('/login');
+        return redirect()->back();
 
     }
 }

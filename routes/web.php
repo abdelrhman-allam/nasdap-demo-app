@@ -13,18 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    Route::get('home', 'HomeController');
+use App\Http\Controllers\Home;
 
-    Route::get('register', 'RegisterUserController');
-    Route::get('login', 'LoginUserController');
+use App\Http\Controllers\UserAuthentication;
+use App\Http\Controllers\ManageCompany;
 
-    Route::post('register', 'RegisterUserController');
-    Route::post('login', 'LoginUserController');
+/* home routes */
+Route::get('/', Home\IndexController::class);
 
-    Route::get('home', 'HomeController');
-    Route::get('list-companies', 'ListCompaniesController');
-    Route::get('show-company', 'ShowCompanyController');
+/* basic auth routes */
+Route::prefix('auth')->group(function () {
+    Route::get('register', UserAuthentication\RegisterController::class);
+    Route::get('login', UserAuthentication\LoginController::class);
+    Route::post('register', UserAuthentication\RegisterController::class);
+    Route::post('login', UserAuthentication\LoginController::class);
+    Route::post('logout', UserAuthentication\LogoutController::class);
+});
 
-    Route::post('add-company', 'AddCompanyController');
+/* company routes */
+Route::prefix('company')->group(function () {
+    Route::get('/', ManageCompany\ListCompaniesController::class);
+    Route::get('{id}', ManageCompany\ShowCompanyController::class);
+    Route::post('/', ManageCompany\CreateCompanyController::class);
 });

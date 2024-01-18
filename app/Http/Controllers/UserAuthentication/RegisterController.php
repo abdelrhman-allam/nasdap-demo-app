@@ -18,8 +18,9 @@ class RegisterController extends Controller
             'password' => 'required|min:8'
         ])){
             $this->UserAuthenticationService->register($request);
+            return redirect('/login');
         }
 
-        return redirect('/login');
+        return redirect()->back();
     }
 }
