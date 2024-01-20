@@ -62,5 +62,6 @@ Class EloquentCompanyRepository implements ICompanyRepository
             $company->description,
             $company->address
         );
+    }
 
 }

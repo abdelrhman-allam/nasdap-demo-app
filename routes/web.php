@@ -13,26 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\Home;
+Route::view('/', 'welcome');
 
-use App\Http\Controllers\UserAuthentication;
-use App\Http\Controllers\ManageCompany;
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-/* home routes */
-Route::get('/', Home\IndexController::class);
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
-/* basic auth routes */
-Route::prefix('auth')->group(function () {
-    Route::get('register', UserAuthentication\RegisterController::class);
-    Route::get('login', UserAuthentication\LoginController::class);
-    Route::post('register', UserAuthentication\RegisterController::class);
-    Route::post('login', UserAuthentication\LoginController::class);
-    Route::post('logout', UserAuthentication\LogoutController::class);
-});
-
-/* company routes */
-Route::prefix('company')->group(function () {
-    Route::get('/', ManageCompany\ListCompaniesController::class);
-    Route::get('{id}', ManageCompany\ShowCompanyController::class);
-    Route::post('/', ManageCompany\CreateCompanyController::class);
-});
+require __DIR__.'/auth.php';
