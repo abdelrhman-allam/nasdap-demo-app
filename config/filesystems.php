@@ -36,10 +36,18 @@ return [
             'throw' => false,
         ],
 
+        'company-logo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/company-logo'),
+            'throw' => false,
+            'url' => env('APP_URL') . '/company-logo',
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -71,6 +79,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('company-logo') => storage_path('app/company-logo'),
     ],
 
 ];

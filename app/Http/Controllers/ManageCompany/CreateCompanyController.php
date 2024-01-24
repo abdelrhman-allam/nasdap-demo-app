@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\ManageCompany;
 
-use App\Models\Company;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Models\Company;
 
 class CreateCompanyController extends Controller
 {

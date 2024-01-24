@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Company\CreateCompany;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    Route::get('home', 'HomeController');
+Route::view('/', 'welcome');
 
-    Route::get('register', 'RegisterUserController');
-    Route::get('login', 'LoginUserController');
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-    Route::post('register', 'RegisterUserController');
-    Route::post('login', 'LoginUserController');
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
-    Route::get('home', 'HomeController');
-    Route::get('list-companies', 'ListCompaniesController');
-    Route::get('show-company', 'ShowCompanyController');
+Route::view('company', 'company')
+    ->middleware(['auth'])
+    ->name('company');
 
-    Route::post('add-company', 'AddCompanyController');
-});
+
+require __DIR__ . '/auth.php';

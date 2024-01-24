@@ -3,14 +3,15 @@
 namespace Tests\Unit\src\Domain\Entities;
 
 use PHPUnit\Framework\TestCase;
-use src\Domain\Entities\Company;
-use src\Domain\ValueObjects\CompanyId;
-use src\Domain\ValueObjects\CompanyName;
-use src\Domain\ValueObjects\Logo;
-use src\Domain\ValueObjects\Description;
-use src\Domain\ValueObjects\Address;
 
-class Company extends TestCase
+use src\Domain\Company\Entity\Company;
+use src\Domain\ValueObjects\Description;
+use src\Domain\Company\ValueObjects\Logo;
+use src\Domain\Company\ValueObjects\Address;
+use src\Domain\Company\ValueObjects\CompanyId;
+use src\Domain\Company\ValueObjects\CompanyName;
+
+class TestCompany extends TestCase
 {
 
     public function test_to_array(): void
@@ -31,8 +32,8 @@ class Company extends TestCase
             'description' => 'test',
             'address' => 'test',
         ], [
-        $company->toArray()]);
-
+            $company->toArray()
+        ]);
     }
 
     public function test_get_id(): void
@@ -104,8 +105,4 @@ class Company extends TestCase
 
         $this->assertEquals('test', $company->getAddress()->getValue());
     }
-
-
-
-
 }
