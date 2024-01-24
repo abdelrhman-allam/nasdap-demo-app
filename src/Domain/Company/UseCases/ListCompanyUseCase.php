@@ -2,16 +2,17 @@
 
 namespace src\Domain\company\UseCases;
 
-use src\Domain\company\Repositories\ICompanyRepository;
+
+use src\Domain\Company\Repository\CompanyRepositoryInterface;
 
 class ListCompanyUseCase
 {
-    public function __construct(private ICompanyRepository $companyRepository)
+    public function __construct(private CompanyRepositoryInterface $companyRepository)
     {
     }
 
     public function execute()
     {
-        return $this->companyRepository->list();
+        return $this->companyRepository->getAllCompanies();
     }
 }

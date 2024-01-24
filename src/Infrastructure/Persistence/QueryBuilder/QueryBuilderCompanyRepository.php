@@ -3,7 +3,7 @@
 namespace src\Infrastructure\Persistence\QueryBuilder;
 
 use Ramsey\Uuid\Uuid;
-use src\Domain\Entities\Company;
+use src\Domain\Company\Entity\Company;
 use src\Domain\Company\Repository\CompanyRepositoryInterface;
 use src\Domain\Company\ValueObjects\CompanyId;
 use src\Domain\Company\ValueObjects\CompanyName;

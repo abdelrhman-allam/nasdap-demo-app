@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Company\CreateCompany;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +24,10 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::view('company', 'company')
+    ->middleware(['auth'])
+    ->name('company');
+
 
 require __DIR__ . '/auth.php';

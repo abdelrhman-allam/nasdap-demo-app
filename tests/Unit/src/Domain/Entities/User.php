@@ -3,10 +3,13 @@
 namespace Tests\Unit\src\Domain\Entities;
 
 use PHPUnit\Framework\TestCase;
-use src\Domain\Entities\User;
-use src\Domain\ValueObjects\UserId;
+use src\Domain\User\Entity\User;
+use src\Domain\User\ValueObjects\Name;
+use src\Domain\User\ValueObjects\Email;
+use src\Domain\User\ValueObjects\Password;
+use src\Domain\User\ValueObjects\UserId;
 
-class User extends TestCase
+class TestUser extends TestCase
 {
 
     public function test_to_array(): void
@@ -25,7 +28,8 @@ class User extends TestCase
             'email' => 'test',
             'password' => 'test',
         ], [
-            $user->toArray()]);
+            $user->toArray()
+        ]);
     }
 
     public function test_get_id(): void
@@ -79,5 +83,4 @@ class User extends TestCase
 
         $this->assertEquals('test', $user->getPassword()->getValue());
     }
-
 }

@@ -42,7 +42,7 @@ class User
     public static function fromArray(array $user): User
     {
         return new self(
-            new UserId($user['userId']),
+            new UserId($user['id']),
             new Name($user['name']),
             new Email($user['email']),
             new Password($user['password'])
